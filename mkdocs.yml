@@ -1,0 +1,186 @@
+site_name: nginx docs
+site_description: "nginx docs"
+site_author: "fengzhao"
+site_url: "https://nginx.fengzhao.me"
+
+# Repository
+repo_name: "fengzhao/nginx-doc"
+repo_url: "https://github.com/fengzhao/nginx-doc"
+
+# Copyright
+copyright: "Copyleft &copy; 2020 - 2023 fengzhao"
+
+theme:
+  name: material
+  language: "zh"
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: "indigo"
+      accent: "indigo"
+
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  font:
+    text: "Roboto"
+    code: "Roboto Mono"
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      type: iso_datetime
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: false
+  - toc:
+      permalink: true
+  - footnotes
+  - meta
+  - def_list
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_png
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.tilde
+
+nav:
+  - "Home": index.md
+  - "学习资源": resources.md
+  # - "赞赏支持": appreciate.md
+  - "介绍":
+      - "0. 初学者指南": Introduction/初学者指南.md
+      - "1. 安装nginx": Introduction/安装nginx.md
+      - "2. 命令行参数": Introduction/命令行参数.md
+      - "3. 控制nginx": Introduction/控制nginx.md
+      - "4. 服务器名称": Introduction/服务器名称.md
+      - "5. Nginx如何处理请求": Introduction/Nginx如何处理请求.md
+      - "6. 记录日志到syslog": Introduction/记录日志到syslog.md
+      - "7. MySQL数据类型": basic/7.MySQL数据类型.md
+      - "8. MySQL字符集和排序规则": basic/8.MySQL字符集和排序规则.md
+      - "9. MySQL逻辑架构和性能优化概述": basic/9.mysql_architecture.md
+      - "10. 数据库事务和锁": basic/10.sql-Transaction.md
+      - "11. Facts 数据": basic/Facts.md
+      - "12. MySQL内存概述": basic/12.MySQL内存概述.md
+      - "13. 条件判断与循环": basic/Conditionals-loop.md
+      - "14. Blocks": basic/Blocks.md
+      - "15. Playbook 高级特性": basic/Playbook-features.md
+  - "":
+      - "1.索引相关": foundmental/suoyin.md
+      - "2.数据库设计": dev/02.数据库设计.md
+      - "3.在线DDL": dev/03.在线DDL.md
+      - "4.联表算法": dev/04.MySQL连表查询算法.md
+      - "5.insert语法": dev/05.MySQL-insert语法.md
+      - "使用动态主机管理云服务": advanced/dynamic-inventory.md
+      - "Ansible 安全":
+          - "Ansible 控制节点安全": advanced/security/index.md
+          - "- 节点安全: 防火墙设置": advanced/security/firewall.md
+          - "- 节点安全: ssh登录二次验证": advanced/security/ssh-2step.md
+          - "- 节点安全: 命令审计": advanced/security/audit.md
+          - "- 节点安全: 加密主机清单": advanced/security/vault-hosts.md
+          - 过滤 Ansible 危险指令: advanced/security/filter-command.md
+      - "Ansible 实践":
+          - "Ansible Task片段": advanced/practice/snippets.md
+          - "在 Jenkins 中使用 Ansible": advanced/practice/jenkins-and-ansible.md
+      - "使用 ARA 记录 Ansible 执行结果": advanced/ara.md
+      - "使用 Ansible-cmdb": advanced/ansible-cmdb.md
+  - "Modules-reference":
+      - "深入理解innoDB存储引擎":
+          - "1.0.MySQL架构到innoDB架构": advanced/1.0.MySQL架构到innoDB架构.md
+          - "1.1.0.InnoDB——简介": advanced/1.1.0.InnoDB——简介.md
+          - "1.1.1.InnoDB——关键特性": advanced/1.1.1.InnoDB——关键特性.md
+          - "1.2.0.InnoDB内存结构——缓冲池": advanced/1.2.0.InnoDB内存结构——缓冲池.md
+      - "OLAP": 
+          - "1.0.OLAP概述": olap/01.OLAP概述.md
+      - "使用 PyCharm 远程开发": dev/pycharm-remote-development.md
+      - "Ansible 调试":
+          - "详细输出": dev/debug/verbose-debug.md
+          - "pdb 本地调试": dev/debug/pdb.md
+          - "PyCharm 远程调试": dev/debug/pycharm.md
+          - "模块调试": dev/debug/module-debug.md
+      - "Module 开发":
+          - "Module 开发说明": dev/modules/index.md
+          - "创建一个简单的module": dev/modules/remote_copy.md
+          - "module 示例: 连接华为交换机": dev/modules/huawei-switch.md
+          - "module 示例: 其他语言开发": dev/modules/module-outher-dev.md
+          - "module 示例: dir": dev/modules/module-shell-dir.md
+          - "module 示例: docker_facts": dev/modules/module-docker-facts.md
+          - "module 示例: wechat": dev/modules/module-wechat.md
+          - "module 的返回值": dev/modules/module-return.md
+          - "module 的帮助文档": dev/modules/module-doc.md
+          - "module 架构": dev/modules/module-architecture.md
+          - "module 工具类": dev/modules/module-utilities.md
+      - "Plugin 开发":
+          - "Plugin 开发说明": dev/plugins/index.md
+          - "Action 示例: hello": dev/plugins/Action-hello.md
+          - "Callback 示例: BlackHole": dev/plugins/Callback-BlackHole.md
+          - "Filter 示例: split": dev/plugins/Filter-split.md
+          - "Inventory 示例: csv": dev/plugins/Inventory-csv.md
+          - "Lookup 示例: github_status": dev/plugins/Lookup-github-status.md
+          - "Vars 示例: csv_vars": dev/plugins/Vars-csv-vars.md
+      - "API 使用":
+          - "API 使用说明": dev/api/index.md
+          - "使用 API 运行任务": dev/api/api-task.md
+          - "使用 API 运行 Palybook": dev/api/api-playbook.md
+          - "使用 suitable": dev/api/api-suitable.md
+          - "使用 ansible runner": dev/api/api-ansible-runner.md
+  - "MySQL调优":
+      #- "Ansible 架构": dev/ansible-architecture.md
+      - "调优概述": optimize/1.overview.md
+      - "数据大小": optimize/many_tables.md     
+      
+      - "Ansible Awx": ui/awx.md
+      - "数据库结构调优": optimize/.md
+      
+  - "PostgreSQL":
+      - "0. PostgreSQL简介": postgresql/01.postgresql简介.md
+      - "1. PogreSQL安装": postgresql/02.postgresql安装.md
+      - "2. PogreSQL体系架构": postgresql/03.体系架构.md
+      - "3. 常用SQL": postgresql/04.常用SQL.md
+      - "4. 继承": postgresql/05.继承表.md
+
+
+  - "MongoDB":
+      - "0. MongoDB概述": mongodb/01.简介.md
+      - "认证":
+          - kerberos-client: roles/auth/kerberos-client.md
+          - kerberos-server: roles/auth/kerberos-server.md
+          - openldap: roles/auth/openldap.md
+
+  - "Redis":
+      - "0. redis概述": redis/01.redis简介.md
+      - "2. redis客户端": redis/02.redis客户端.md
+      - "认证":
+          - kerberos-client: roles/auth/kerberos-client.md
+          - kerberos-server: roles/auth/kerberos-server.md
+          - openldap: roles/auth/openldap.md
+
+
+
+
+extra_css:
+  - stylesheets/extra.css
