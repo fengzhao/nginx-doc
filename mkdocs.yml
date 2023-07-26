@@ -80,7 +80,7 @@ nav:
       - "4. 服务器名称": Introduction/服务器名称.md
       - "5. Nginx如何处理请求": Introduction/Nginx如何处理请求.md
       - "6. 记录日志到syslog": Introduction/记录日志到syslog.md
-      - "7. MySQL数据类型": basic/7.MySQL数据类型.md
+      - "7. 连接处理方式": Introduction/连接处理方式.md
       - "8. MySQL字符集和排序规则": basic/8.MySQL字符集和排序规则.md
       - "9. MySQL逻辑架构和性能优化概述": basic/9.mysql_architecture.md
       - "10. 数据库事务和锁": basic/10.sql-Transaction.md
