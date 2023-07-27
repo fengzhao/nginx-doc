@@ -64,18 +64,18 @@ wget http://nginx.org/download/nginx-1.21.6.tar.gz
 
 # https://www.cnblogs.com/chrdai/p/11306728.html
 nginx-1.21.4
-├── CHANGES 		  # 每个版本提供的特性和 bugfix，changelog文件
+├── CHANGES 		# 每个版本提供的特性和 bugfix，changelog文件
 ├── CHANGES.ru 		# 俄罗斯版本的 CHANGES 文件
-├── LICENSE			  # 开源许可文件
-├── Makefile      # MAKE文件   
-├── README        # README说明文件
-├── auto          # 自动检测系统环境以及编译相关的脚本，辅助 configure 脚本执行的时候去判定nginx支持哪些模块，当前操作系统有什么样的特性可以供给nginx使用
-├── conf          # 默认配置文件，方便运维配置，会把conf示例配置文件拷贝到安装目录
-├── configure     # 命令脚本，用来生成中间文件，执行编译前的一个必备动作
-├── contrib       # 提供了两个 pl 脚本和 vim 工具
-├── html          # 一个 500 错误的默认页面，另一个是默认的 index 页面
-├── man           # nginx 对 Linux 的帮助文件，man ./nginx.8
-└── src           # nginx 核心源代码
+├── LICENSE			# 开源许可文件
+├── Makefile        # MAKE文件   
+├── README          # README说明文件
+├── auto            # 自动检测系统环境以及编译相关的脚本，辅助 configure 脚本执行的时候去判定nginx支持哪些模块，当前操作系统有什么样的特性可以供给nginx使用
+├── conf            # 默认配置文件，方便运维配置，会把conf示例配置文件拷贝到安装目录
+├── configure       # 命令脚本，用来生成中间文件，执行编译前的一个必备动作
+├── contrib         # 提供了两个 pl 脚本和 vim 工具
+├── html            # 一个 500 错误的默认页面，另一个是默认的 index 页面
+├── man             # nginx 对 Linux 的帮助文件，man ./nginx.8
+└── src             # nginx 核心源代码
 
 
 # 配置 Vim 高亮, 如果 Vim 没有开启语法高亮的话，最好开启一下
