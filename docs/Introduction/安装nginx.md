@@ -64,18 +64,18 @@ wget http://nginx.org/download/nginx-1.21.6.tar.gz
 
 # https://www.cnblogs.com/chrdai/p/11306728.html
 nginx-1.21.4
-├── CHANGES 		# 每个版本提供的特性和 bugfix，changelog文件
+├── CHANGES 		  # 每个版本提供的特性和 bugfix，changelog文件
 ├── CHANGES.ru 		# 俄罗斯版本的 CHANGES 文件
-├── LICENSE			# 开源许可文件
-├── Makefile        #    
-├── README          # README说明文件
-├── auto # 自动检测系统环境以及编译相关的脚本，辅助 configure 脚本执行的时候去判定nginx支持哪些模块，当前操作系统有什么样的特性可以供给nginx使用
-├── conf # 示例文件，方便运维配置，会把 conf 示例文件拷贝到安装目录
-├── configure # 命令脚本，用来生成中间文件，执行编译前的一个必备动作
-├── contrib # 提供了两个 pl 脚本和 vim 工具
-├── html # 一个 500 错误的默认页面，另一个是默认的 index 页面
-├── man # nginx 对 Linux 的帮助文件，man ./nginx.8
-└── src # nginx 核心源代码
+├── LICENSE			  # 开源许可文件
+├── Makefile      # MAKE文件   
+├── README        # README说明文件
+├── auto          # 自动检测系统环境以及编译相关的脚本，辅助 configure 脚本执行的时候去判定nginx支持哪些模块，当前操作系统有什么样的特性可以供给nginx使用
+├── conf          # 默认配置文件，方便运维配置，会把conf示例配置文件拷贝到安装目录
+├── configure     # 命令脚本，用来生成中间文件，执行编译前的一个必备动作
+├── contrib       # 提供了两个 pl 脚本和 vim 工具
+├── html          # 一个 500 错误的默认页面，另一个是默认的 index 页面
+├── man           # nginx 对 Linux 的帮助文件，man ./nginx.8
+└── src           # nginx 核心源代码
 
 
 # 配置 Vim 高亮, 如果 Vim 没有开启语法高亮的话，最好开启一下
@@ -86,7 +86,7 @@ echo 'syntax on' > ~/.vimrc
 # configure配置，configure之后，会生成Makefile文件，用于编译和构建nginx
 ./configure   --user=nginx --group=nginx  --prefix=/usr/local/nginx/  --with-http_stub_status_module  --with-http_ssl_module
 
-./configure --help # --help 命令可以查看配置脚本支持哪些参数
+./configure --help # --help 命令可以查看配置脚本支持哪些参数选项
 
 # 第一类配置参数
 
@@ -119,7 +119,7 @@ echo 'syntax on' > ~/.vimrc
 --without-http_ssi_module          disable ngx_http_ssi_module
 ...
 
-
+# 编译并安装
 make && make install 
 
 
@@ -151,6 +151,40 @@ sudo apt-get install gcc make libpcre3 libpcre3-dev   zlib1g-dev openssl libssl-
 
 
 ```
+
+## Docker运行
+
+利用 Docker 直接运行一个容器，然后将配置映射出来也是一种不错的选择：
+
+
+```shell
+$ docker run -d \
+    --name nginx \
+    -p 80:80 \
+    -p 443:443 \
+    -v $PWD/conf.d:/etc/nginx/conf.d \
+    nginx
+
+$ curl -v localhost
+<html>
+......
+</html>
+
+```
+
+## 动态模块
+
+动态模块，默认情况 nginx 是由许多核心模块构建的，那需要实现额外的功能就需要重新构建。但版本 1.9.11 之后，nginx 支持了`动态模块`，以下是 nginx 动态构建的模块：
+
+nginx-module-geoip
+nginx-module-image-filter
+nginx-module-njs
+nginx-module-perl
+nginx-module-xslt
+它可以通过单独的包进行发布，在使用时只需 nginx 加载即可：
+
+# 作用域 main
+load_module modules/ngx_mail_module.so;
 
 ## 原文档
 
