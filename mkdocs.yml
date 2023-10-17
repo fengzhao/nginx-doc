@@ -109,13 +109,20 @@ nav:
       - "使用 ARA 记录 Ansible 执行结果": advanced/ara.md
       - "使用 Ansible-cmdb": advanced/ansible-cmdb.md
   - "Modules-reference":
-      - "深入理解innoDB存储引擎":
-          - "1.0.MySQL架构到innoDB架构": advanced/1.0.MySQL架构到innoDB架构.md
-          - "1.1.0.InnoDB——简介": advanced/1.1.0.InnoDB——简介.md
-          - "1.1.1.InnoDB——关键特性": advanced/1.1.1.InnoDB——关键特性.md
-          - "1.2.0.InnoDB内存结构——缓冲池": advanced/1.2.0.InnoDB内存结构——缓冲池.md
-      - "OLAP": 
-          - "1.0.OLAP概述": olap/01.OLAP概述.md
+      - "核心功能": Modules-reference/核心功能.md
+      - "HTTP": 
+          - "ngx_http_access_module": Modules-reference/http/ngx_http_access_module.md
+          - "ngx_http_addition_module": Modules-reference/http/ngx_http_addition_module.md
+          - "ngx_http_auth_basic_module": Modules-reference/http/ngx_http_auth_basic_module.md
+          - "ngx_http_auth_jwt_module": Modules-reference/http/ngx_http_auth_jwt_module.md
+          - "ngx_http_auth_request_module": Modules-reference/http/ngx_http_auth_request_module.md
+          - "ngx_http_autoindex_module": Modules-reference/http/ngx_http_autoindex_module.md
+          - "ngx_http_browser_module": Modules-reference/http/ngx_http_browser_module.md
+          - "ngx_http_charset_module": Modules-reference/http/ngx_http_charset_module.md
+          - "ngx_http_core_module": Modules-reference/http/ngx_http_core_module.md
+          - "module 的帮助文档": dev/modules/module-doc.md
+          - "module 架构": dev/modules/module-architecture.md
+          - "module 工具类": dev/modules/module-utilities.md
       - "使用 PyCharm 远程开发": dev/pycharm-remote-development.md
       - "Ansible 调试":
           - "详细输出": dev/debug/verbose-debug.md
