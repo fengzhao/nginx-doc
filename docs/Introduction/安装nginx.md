@@ -45,23 +45,57 @@ enabled=1
 
 ## 从源码安装
 
+编译安装
+
+编译安装一般适用高级用户，对Nginx各种特性都非常熟悉并且知道自己需要哪些功能的用户。普通用户一般使用Linux发行版的包管理器安装就可以。
+提前规划好编译安装的相关文件路径：
+
+- 可执行文件：/usr/local/nginx/sbin/
+- 资源目录：/usr/local/nginx/html/
+- 日志目录：/usr/local/nginx/logs/
+- 配置目录：/usr/local/nginx/conf/
+
+
 如果需要某些特殊功能软件包和 ports 无法提供，那么可以从源码中编译 nginx。虽然此方式更加灵活，但对于初学者来说可能会很复杂。更多信息请参阅 [从源码构建 nginx](../How-To/从源码构建nginx.md)。
 
 ```shell
-# 添加运行nginx的用户
-groupadd nginx
-useradd -r -g nginx -s /bin/false nginx
+
 
 
 # 安装依赖环境，确保编译正常
 sudo yum install gcc gcc-c++ make automake autoconf libtool pcre* zlib openssl openssl-devel  pcre pcre-devel
 
-sudo apt install zlib1g zlib1g-dev
+# ubuntu
+apt-get install build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev libgd-dev libxml2 libxml2-dev uuid-dev libgeoip-dev   geoip-database geoipupdate  libmaxminddb-dev
 
-# 在 http://nginx.org/en/download.html 里面下载 Nginx 源代码，永远下载最新的Stable release版本
+# 在 http://nginx.org/en/download.html 里面下载 Nginx 源代码，永远去下载最新的Stable release版本
 wget http://nginx.org/download/nginx-1.21.6.tar.gz
 
 
+
+
+# 下载编译安装
+mkdir -p /usr/local/nginx
+useradd nginx -s /sbin/nologin -M
+
+# 在 http://nginx.org/en/download.html 里面下载 Nginx 源代码，永远去下载最新的Stable release版本
+wget -P /usr/local/src/  http://nginx.org/download/nginx-1.22.0.tar.gz  
+cd /usr/local/src/ &&  tar -zxvf nginx-1.22.0.tar.gz
+cd  nginx-1.22.0
+
+
+# 配置 Vim 高亮, 如果 Vim 没有开启语法高亮的话，最好开启一下
+cp -r contrib/vim/* ~/.vim
+echo 'syntax on' > ~/.vimrc 
+
+############################################ 阅读部分 ############################################
+# 使用最新的ngx_http_geoip2，该模块可以精确到国家、省、市等一级的IP，并且全部由Nginx执行识别和阻止访问
+# nginx原生的ngx_http_geoip_module不支持GeoIP2，所以需要用第三方的ngx_http_geoip2_module模块
+git clone https://github.com/leev/ngx_http_geoip2_module.git  /usr/local/
+
+
+
+# 源代码目录结构说明
 # https://www.cnblogs.com/chrdai/p/11306728.html
 nginx-1.21.4
 ├── CHANGES 		  # 每个版本提供的特性和 bugfix，changelog文件
@@ -77,10 +111,7 @@ nginx-1.21.4
 ├── man               # nginx 对 Linux 的帮助文件，man ./nginx.8
 └── src               # nginx 核心源代码
 
-
-# 配置 Vim 高亮, 如果 Vim 没有开启语法高亮的话，最好开启一下
-cp -r contrib/vim/* ~/.vim
-echo 'syntax on' > ~/.vimrc 
+############################################ 阅读部分 ############################################
 
 
 # configure配置，configure之后，会生成Makefile文件，用于编译和构建nginx
@@ -89,7 +120,6 @@ echo 'syntax on' > ~/.vimrc
 ./configure --help # --help 命令可以查看配置脚本支持哪些参数选项
 
 # 第一类配置参数
-
 --prefix=PATH                      set installation prefix      # 一般指定这个路径就可以了，其他文件会在 prefix 目录下建立相应的文件夹
 --sbin-path=PATH                   set nginx binary pathname
 --modules-path=PATH                set modules path
@@ -121,7 +151,6 @@ echo 'syntax on' > ~/.vimrc
 
 # 编译并安装
 make && make install 
-
 
 
 # nginx服务配置文件，使用systemd
